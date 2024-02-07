@@ -66,41 +66,7 @@ password.addEventListener("input", function () {
     const lowercasecheck = document.getElementById("lowercase");
     const uppercasecheck = document.getElementById("uppercase");
     const numericvaluecheck = document.getElementById("Numericvalue");
-
-    // if (specialchar.test(inputpassword)) {
-    //     specialcharcheck.style.display = "none";
-    //     flag1=true;
-    // }
-    // if (lowercasechar.test(inputpassword)) {
-    //     lowercasecheck.style.display = "none";
-    //     flag2=true;
-    // }
-    // if (uppercasechar.test(inputpassword)) {
-    //     uppercasecheck.style.display = "none";
-    //     flag3=true;
-    // }
-    // if (numericvalue.test(inputpassword)) {
-    //     numericvaluecheck.style.display = "none";   
-    //     flag4=true;         
-    // } 
-
-    // if (!(specialchar.test(inputpassword))) {
-    //     specialcharcheck.style.display = "block";
-    //      flag1=false;
-    // }
-    // if (!(lowercasechar.test(inputpassword))) {
-    //     lowercasecheck.style.display = "block";
-    //      flag2=false;
-    // }
-    // if (!(uppercasechar.test(inputpassword))) {
-    //     uppercasecheck.style.display = "block";
-    //      flag3=false;
-    // }
-    // if (!(numericvalue.test(inputpassword))) {
-    //     numericvaluecheck.style.display = "block";
-    //      flag4=false;
-    // } 
-
+ 
     flag1=checkpasswordvalidity(inputpassword,specialchar,specialcharcheck,flag1);
     flag2=checkpasswordvalidity(inputpassword,lowercasechar,lowercasecheck,flag2);
     flag3=checkpasswordvalidity(inputpassword,uppercasechar,uppercasecheck,flag3);
