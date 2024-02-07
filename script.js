@@ -47,7 +47,7 @@ function checkpasswordvalidity(passwordvalue,character,message,flagvalue){
 
     if(character.test(passwordvalue)){
         message.style.display="none";
-        flagvalue=ture;
+        flagvalue=true;
     }
     else{
         message.style.display="block";
