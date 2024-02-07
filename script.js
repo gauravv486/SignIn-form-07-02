@@ -1,8 +1,8 @@
 const form = document.getElementById("form");
 const username = document.getElementById("username");
-const errormessage = document.getElementById("error-msg");
+const minError = document.getElementById("min-error");
 const password = document.getElementById("password");
-const errorpassword = document.getElementById("error-password");
+const maxError = document.getElementById("max-error");
 const buttton=document.getElementById("btn");
 let flag1=false;
 let flag2=false;
@@ -31,17 +31,30 @@ form.addEventListener("submit",function(event){
 username.addEventListener("input", function () {
     let inputvalue = username.value.trim();
      if (/^\d+$/.test(inputvalue)) {
-        errormessage.textContent = "";
+        minError.textContent = "";
     } else {
-        errormessage.textContent = "ID should contain numbers only! ";
-        errormessage.style.fontSize = "15px";
-        errormessage.style.color = "red";
+        minError.textContent = "ID should contain numbers only! ";
+        minError.style.fontSize = "15px";
+        minError.style.color = "red";
         if (inputvalue == "") {
-            errormessage.textContent = "";
+            minError.textContent = "";
         }
     }
 });
 
+
+function checkpasswordvalidity(passwordvalue,character,message,flagvalue){
+
+    if(character.test(passwordvalue)){
+        message.style.display="none";
+        flagvalue=ture;
+    }
+    else{
+        message.style.display="block";
+        flagvalue=false;
+    }
+    return flagvalue;
+}
 
 password.addEventListener("input", function () {
     const inputpassword = password.value.trim();
@@ -53,39 +66,46 @@ password.addEventListener("input", function () {
     const lowercasecheck = document.getElementById("lowercase");
     const uppercasecheck = document.getElementById("uppercase");
     const numericvaluecheck = document.getElementById("Numericvalue");
-    if (specialchar.test(inputpassword)) {
-        specialcharcheck.style.display = "none";
-        flag1=true;
-    }
-    if (lowercasechar.test(inputpassword)) {
-        lowercasecheck.style.display = "none";
-        flag2=true;
-    }
-    if (uppercasechar.test(inputpassword)) {
-        uppercasecheck.style.display = "none";
-        flag3=true;
-    }
-    if (numericvalue.test(inputpassword)) {
-        numericvaluecheck.style.display = "none";   
-        flag4=true;         
-    } 
 
-    if (!(specialchar.test(inputpassword))) {
-        specialcharcheck.style.display = "block";
-         flag1=false;
-    }
-    if (!(lowercasechar.test(inputpassword))) {
-        lowercasecheck.style.display = "block";
-         flag2=false;
-    }
-    if (!(uppercasechar.test(inputpassword))) {
-        uppercasecheck.style.display = "block";
-         flag3=false;
-    }
-    if (!(numericvalue.test(inputpassword))) {
-        numericvaluecheck.style.display = "block";
-         flag4=false;
-    } 
+    // if (specialchar.test(inputpassword)) {
+    //     specialcharcheck.style.display = "none";
+    //     flag1=true;
+    // }
+    // if (lowercasechar.test(inputpassword)) {
+    //     lowercasecheck.style.display = "none";
+    //     flag2=true;
+    // }
+    // if (uppercasechar.test(inputpassword)) {
+    //     uppercasecheck.style.display = "none";
+    //     flag3=true;
+    // }
+    // if (numericvalue.test(inputpassword)) {
+    //     numericvaluecheck.style.display = "none";   
+    //     flag4=true;         
+    // } 
+
+    // if (!(specialchar.test(inputpassword))) {
+    //     specialcharcheck.style.display = "block";
+    //      flag1=false;
+    // }
+    // if (!(lowercasechar.test(inputpassword))) {
+    //     lowercasecheck.style.display = "block";
+    //      flag2=false;
+    // }
+    // if (!(uppercasechar.test(inputpassword))) {
+    //     uppercasecheck.style.display = "block";
+    //      flag3=false;
+    // }
+    // if (!(numericvalue.test(inputpassword))) {
+    //     numericvaluecheck.style.display = "block";
+    //      flag4=false;
+    // } 
+
+    flag1=checkpasswordvalidity(inputpassword,specialchar,specialcharcheck,flag1);
+    flag2=checkpasswordvalidity(inputpassword,lowercasechar,lowercasecheck,flag2);
+    flag3=checkpasswordvalidity(inputpassword,uppercasechar,uppercasecheck,flag3);
+    flag4=checkpasswordvalidity(inputpassword,numericvalue,numericvaluecheck,flag4);
+    
 
     if(inputpassword=="")
     {
